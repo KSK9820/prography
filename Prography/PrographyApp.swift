@@ -13,6 +13,7 @@ struct PrographyApp: App {
         WindowGroup {
             NavigationStack {
                 ContentView()
+                
             }
         }
     }
