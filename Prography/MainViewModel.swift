@@ -12,7 +12,7 @@ import Foundation
 final class MainViewModel {
     private var cancellables = Set<AnyCancellable>()
     private let httpService: HTTPServicable = HTTPService()
-    var photos: [PhotoDTO] = []
+    private(set) var photos: [PhotoDTO] = []
     
     func getPhotos() {
         httpService.request(for: UnsplashRequest.main, type: [PhotoDTO].self)
