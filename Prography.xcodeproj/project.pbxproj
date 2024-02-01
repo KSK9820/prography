@@ -12,6 +12,9 @@
 		530984A72B6A69A700132CEB /* RecentImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530984A62B6A69A700132CEB /* RecentImageCell.swift */; };
 		530984A92B6A6B2500132CEB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530984A82B6A6B2500132CEB /* MainViewModel.swift */; };
 		539966EA2B6B6E4400251119 /* BookmarkImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539966E92B6B6E4400251119 /* BookmarkImageCell.swift */; };
+		539FF1AA2B6BA8420051EC7A /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539FF1A92B6BA8420051EC7A /* ImageCacher.swift */; };
+		539FF1AC2B6BAC4F0051EC7A /* ImageCacheLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539FF1AB2B6BAC4F0051EC7A /* ImageCacheLoader.swift */; };
+		539FF1AE2B6BB4B40051EC7A /* CacheImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539FF1AD2B6BB4B40051EC7A /* CacheImageView.swift */; };
 		53CEACE82B69EB8B00A99576 /* PrographyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CEACE72B69EB8B00A99576 /* PrographyApp.swift */; };
 		53CEACEA2B69EB8B00A99576 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CEACE92B69EB8B00A99576 /* ContentView.swift */; };
 		53CEACEC2B69EB8D00A99576 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53CEACEB2B69EB8D00A99576 /* Assets.xcassets */; };
@@ -33,6 +36,9 @@
 		530984A62B6A69A700132CEB /* RecentImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentImageCell.swift; sourceTree = "<group>"; };
 		530984A82B6A6B2500132CEB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		539966E92B6B6E4400251119 /* BookmarkImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkImageCell.swift; sourceTree = "<group>"; };
+		539FF1A92B6BA8420051EC7A /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
+		539FF1AB2B6BAC4F0051EC7A /* ImageCacheLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheLoader.swift; sourceTree = "<group>"; };
+		539FF1AD2B6BB4B40051EC7A /* CacheImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageView.swift; sourceTree = "<group>"; };
 		53CEACE42B69EB8B00A99576 /* Prography.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prography.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53CEACE72B69EB8B00A99576 /* PrographyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrographyApp.swift; sourceTree = "<group>"; };
 		53CEACE92B69EB8B00A99576 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +70,7 @@
 		530984AA2B6B24E000132CEB /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				539FF1AD2B6BB4B40051EC7A /* CacheImageView.swift */,
 				53CEACE92B69EB8B00A99576 /* ContentView.swift */,
 				530984A22B6A620800132CEB /* MainView.swift */,
 				530984A42B6A621F00132CEB /* RandomPhotoView.swift */,
@@ -79,6 +86,15 @@
 				530984A62B6A69A700132CEB /* RecentImageCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		539FF1A72B6BA8200051EC7A /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				539FF1A92B6BA8420051EC7A /* ImageCacher.swift */,
+				539FF1AB2B6BAC4F0051EC7A /* ImageCacheLoader.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		53CEACDB2B69EB8B00A99576 = {
@@ -107,6 +123,7 @@
 				53CEACF52B69EBB600A99576 /* ModelDTO */,
 				53CEACE72B69EB8B00A99576 /* PrographyApp.swift */,
 				530984A82B6A6B2500132CEB /* MainViewModel.swift */,
+				539FF1A72B6BA8200051EC7A /* Cache */,
 				530984AA2B6B24E000132CEB /* VIew */,
 				53CEACEB2B69EB8D00A99576 /* Assets.xcassets */,
 				53CEACED2B69EB8D00A99576 /* Preview Content */,
@@ -248,7 +265,9 @@
 			files = (
 				53CEACF72B69EBB600A99576 /* PhotoDTO.swift in Sources */,
 				53CEACEA2B69EB8B00A99576 /* ContentView.swift in Sources */,
+				539FF1AA2B6BA8420051EC7A /* ImageCacher.swift in Sources */,
 				530984A52B6A621F00132CEB /* RandomPhotoView.swift in Sources */,
+				539FF1AC2B6BAC4F0051EC7A /* ImageCacheLoader.swift in Sources */,
 				53CEACE82B69EB8B00A99576 /* PrographyApp.swift in Sources */,
 				539966EA2B6B6E4400251119 /* BookmarkImageCell.swift in Sources */,
 				53CEAD022B69EBBE00A99576 /* UnsplashRequest.swift in Sources */,
@@ -259,6 +278,7 @@
 				530984A72B6A69A700132CEB /* RecentImageCell.swift in Sources */,
 				530984A32B6A620900132CEB /* MainView.swift in Sources */,
 				53CEAD032B69EBBE00A99576 /* HTTPRequestable.swift in Sources */,
+				539FF1AE2B6BB4B40051EC7A /* CacheImageView.swift in Sources */,
 				53CEAD042B69EBBE00A99576 /* HTTPServicable.swift in Sources */,
 				53CEAD0A2B69EBD400A99576 /* Extension+UITabBarController.swift in Sources */,
 			);

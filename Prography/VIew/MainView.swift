@@ -10,10 +10,16 @@ import SwiftUI
 struct MainView: View {
     private let viewModel = MainViewModel()
     
+//    init() {
+//        viewModel.getPhotos()
+//    }
+    
     var body: some View {
         NavigationStack {
             ScrollView(.vertical) {
-                // bookmark
+                
+                // MARK: - Bookmark
+
                 Section {
                     ScrollView(.horizontal) {
                         LazyHStack {
@@ -32,7 +38,8 @@ struct MainView: View {
                 .padding([.leading, .trailing])
                 
                 
-                // recent imageset
+                // MARK: - RecentImage
+
                 Section {
                     HStack(alignment: .top){
                         LazyVStack(spacing: 8) {
@@ -57,16 +64,13 @@ struct MainView: View {
                         Spacer()
                     }
                 }
-                
                 .padding([.leading, .trailing])
-                
+            }
+            .onAppear {
+                viewModel.getPhotos()
             }
         }
-        .onAppear {
-            viewModel.getPhotos()
-        }
     }
-
 }
 
 #Preview {

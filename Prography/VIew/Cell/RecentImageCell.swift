@@ -43,13 +43,13 @@ struct RecentImageCell: View {
             RoundedRectangle(cornerRadius: 4)
                 .fill(.clear)
                 .background(
-                    Group {
-                        if viewModel.isLoading {
-                            
-                        } else {
-                            AsyncImage(url: URL(string: image.urls.thumb)!)
-                        }
-                    }
+                    CacheImageView(urlString: image.urls.thumb)
+//                    AsyncImage(url: URL(string: image.urls.thumb))
+//                    AsyncImage(url: URL(string: image.urls.thumb)!, content: {
+//                        $0
+//                    }, placeholder: {
+//                        Text("123")
+//                    })
                 )
                 .frame(width: viewModel.width, height: viewModel.height)
                 .clipShape(RoundedRectangle(cornerRadius: 4))

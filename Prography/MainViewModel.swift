@@ -17,7 +17,9 @@ final class MainViewModel {
     func getPhotos() {
         httpService.request(for: UnsplashRequest.main, type: [PhotoDTO].self)
             .replaceError(with: [])
-            .assign(to: \.photos, on: self)
+            .sink(receiveValue: { [weak self] photos in
+                self?.photos += photos
+            })
             .store(in: &cancellables)
     }
 }
