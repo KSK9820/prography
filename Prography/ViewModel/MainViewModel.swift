@@ -10,6 +10,7 @@ import Foundation
 
 @Observable
 final class MainViewModel {
+    
     private var cancellables = Set<AnyCancellable>()
     private let httpService: HTTPServicable = HTTPService()
     private(set) var photos: [PhotoDTO] = []

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let screenWidth = UIScreen.main.bounds.width - 24
+
 struct ContentView: View {
     
     var body: some View {

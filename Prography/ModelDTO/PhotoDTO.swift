@@ -14,11 +14,14 @@ struct PhotoDTO: Identifiable, Decodable {
     let description: String?
     let altDescription: String?
     let urls: Urls
-    let tags: Tag?
+    let tags: [Tags]?
+    let currentUserCollections: [CurrentUserCollections]?
+    let user: User?
     
     enum CodingKeys: String, CodingKey {
         case altDescription = "alt_description"
-        case id, width, height, description, urls, tags
+        case currentUserCollections = "current_user_collections"
+        case id, width, height, description, urls, tags, user
     }
 }
 
@@ -40,6 +43,18 @@ struct Urls: Decodable {
     let thumb: String
 }
 
-struct Tag: Decodable {
+struct Tags: Decodable {
     let title: String
+}
+
+struct CurrentUserCollections: Decodable {
+    let title: String
+}
+
+struct User: Decodable {
+    let userName: String
+    
+    enum CodingKeys: String, CodingKey {
+        case userName = "username"
+    }
 }

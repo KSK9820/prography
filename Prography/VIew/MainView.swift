@@ -9,17 +9,20 @@ import SwiftUI
 
 struct MainView: View {
     private let viewModel = MainViewModel()
+
+    @State private var selectedImageID: PhotoDTO? = nil
+    @State private var isPresentingModal: Bool = false
     
-//    init() {
-//        viewModel.getPhotos()
-//    }
+    init() {
+        viewModel.getPhotos()
+    }
     
     var body: some View {
         NavigationStack {
             ScrollView(.vertical) {
                 
                 // MARK: - Bookmark
-
+                
                 Section {
                     ScrollView(.horizontal) {
                         LazyHStack {
@@ -30,6 +33,7 @@ struct MainView: View {
                     }
                 } header: {
                     HStack {
+                        
                         Text("북마크")
                             .font(.title.bold())
                         Spacer()
@@ -39,23 +43,35 @@ struct MainView: View {
                 
                 
                 // MARK: - RecentImage
-
+                
                 Section {
-                    HStack(alignment: .top){
+                    HStack(alignment: .top) {
                         LazyVStack(spacing: 8) {
+                            
                             ForEach(0..<viewModel.photos.count, id: \.self) { index in
-                                if index % 2 == 0 {
-                                    RecentImageCell(image: viewModel.photos[index])
-                                }
+                                RecentImageCell(viewModel: RecentImageCellViewModel(photo: viewModel.photos[index]))
+                                    .onTapGesture {
+                                        self.selectedImageID = viewModel.photos[index]
+                                        self.isPresentingModal = true
+                                    }
                             }
+                            
                         }
+                        
                         LazyVStack(spacing: 8) {
                             ForEach(0..<viewModel.photos.count, id: \.self) { index in
                                 if index % 2 == 1 {
-                                    RecentImageCell(image: viewModel.photos[index])
+                                    RecentImageCell(viewModel: RecentImageCellViewModel(photo: viewModel.photos[index]))
+                                        .onTapGesture {
+                                            self.selectedImageID = viewModel.photos[index]
+                                            self.isPresentingModal = true
+                                        }
                                 }
+                                
                             }
                         }
+                    }.transparentFullScreenCover(isPresented: $isPresentingModal) {
+                        PhotoDetailView(viewModel: PhotoDetailViewModel(photo: selectedImageID ?? viewModel.photos[1]))
                     }
                 } header: {
                     HStack {
@@ -66,8 +82,15 @@ struct MainView: View {
                 }
                 .padding([.leading, .trailing])
             }
-            .onAppear {
-                viewModel.getPhotos()
+            //            .onAppear {
+            //                viewModel.getPhotos()
+            //            }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Image(.logo)
+                    }
+                }
             }
         }
     }

@@ -12,8 +12,8 @@ final class ImageCacher {
     private let nsCache = NSCache<NSString, UIImage>()
     
     subscript(_ urlString: String?) -> UIImage? {
-        let a = fetch(for: urlString)
-        return a
+        let image = fetch(for: urlString)
+        return image
     }
     
     func fetch(for key: String?) -> UIImage? {

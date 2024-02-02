@@ -21,7 +21,6 @@ final class ImageCacheLoader {
     }
     
     func load() {
-        
         if imageCacher[url.absoluteString] != nil {
             uiImage = imageCacher[url.absoluteString]
             return
@@ -36,8 +35,8 @@ final class ImageCacheLoader {
             }
             .replaceError(with: UIImage(systemName: "sun.min")!)
             .sink(receiveValue: { [weak self] image in
-                self?.uiImage = image
-                self?.imageCacher.store(image, for: self?.url.absoluteString)
+                    self?.uiImage = image
+                    self?.imageCacher.store(image, for: self?.url.absoluteString)
             })
     }
 }

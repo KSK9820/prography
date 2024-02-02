@@ -24,7 +24,7 @@ struct CacheImageView: View {
             if let image = loader.uiImage {
                 Image(uiImage: image)
             } else {
-                Text("로딩중")
+                ProgressView()
             }
         }
     }

@@ -7,35 +7,11 @@
 
 import SwiftUI
 
-final class RecentImageCellViewModel: ObservableObject {
-    private var image: PhotoDTO
-    let width = CGFloat((UIScreen.main.bounds.width - 40) / 2)
-    
-    // 비즈니스 로직
-    var height: CGFloat {
-        CGFloat(image.height * Int(width) / image.width)
-    }
-    
-    var isLoading: Bool {
-        false
-    }
-    
-    var description: String {
-        image.description ?? ""
-    }
-    
-    init(image: PhotoDTO) {
-        self.image = image
-    }
-}
-
 struct RecentImageCell: View {
-    private let image: PhotoDTO
     private let viewModel: RecentImageCellViewModel
     
-    init(image: PhotoDTO) {
-        self.image = image
-        self.viewModel = RecentImageCellViewModel(image: self.image)
+    init(viewModel: RecentImageCellViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -43,7 +19,7 @@ struct RecentImageCell: View {
             RoundedRectangle(cornerRadius: 4)
                 .fill(.clear)
                 .background(
-                    CacheImageView(urlString: image.urls.thumb)
+                    CacheImageView(urlString: viewModel.photoURLString)
 //                    AsyncImage(url: URL(string: image.urls.thumb))
 //                    AsyncImage(url: URL(string: image.urls.thumb)!, content: {
 //                        $0
@@ -55,22 +31,17 @@ struct RecentImageCell: View {
                 .clipShape(RoundedRectangle(cornerRadius: 4))
             
             VStack(alignment: .leading) {
-                Text(viewModel.description)
+                Text(viewModel.title)
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
             }
             .frame(alignment: .bottomLeading)
-            .padding(.leading, 10)
-            .padding(.bottom, 10)
+            .padding(.horizontal, 10)
         }
     }
 }
 
 #Preview {
-    RecentImageCell(image: PhotoDTO(id: "!", width: 8640, height: 5670, description: "aa", altDescription: "Aa", urls: Urls.init(raw: "a", full: "a", regular: "a", small: "a", thumb: "a"), tags: nil))
+    RecentImageCell(viewModel: RecentImageCellViewModel(photo: PhotoDTO(id: "300", width: 2448, height: 3264, description: "kadjflakjdl;skfja;lskdjf;alksdjfla", altDescription: nil, urls: Urls(raw: "https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg", full: "https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg", regular: "https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg", small: "https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg", thumb: "https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg"), tags: [Tags(title: "man"), Tags(title: "dd")], currentUserCollections: [CurrentUserCollections(title: "hihihihihihih")], user: User(userName: "dddd"))))
 }
-
-
-
-
