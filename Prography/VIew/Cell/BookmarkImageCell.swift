@@ -42,7 +42,7 @@ struct BookmarkImageCell: View {
                         if viewModel.isLoading {
                             
                         } else {
-                            AsyncImage(url: URL(string: image.urls.thumb)!)
+//                            AsyncImage(url: URL(string: image.urls.thumb)!)
                         }
                     }
                 )

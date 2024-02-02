@@ -10,7 +10,7 @@ import Foundation
 enum UnsplashRequest {
     case main
     case randomPhoto
-    case photoDetail
+    case photoDetail(id: String)
 }
 
 extension UnsplashRequest: HTTPRequestable {
@@ -33,8 +33,8 @@ extension UnsplashRequest: HTTPRequestable {
             return ["photos"]
         case .randomPhoto:
             return ["photos", "randoms"]
-        case .photoDetail:
-            return ["photos", "id"]
+        case .photoDetail(let id):
+            return ["photos", id]
         }
     }
     var queries: [URLQueryItem]? { nil }

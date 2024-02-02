@@ -20,7 +20,7 @@ struct RecentImageCell: View {
                 .fill(.clear)
                 .background(
                     CacheImageView(urlString: viewModel.photoURLString)
-//                    AsyncImage(url: URL(string: image.urls.thumb))
+//                    AsyncImage(url: URL(string: viewModel.photoURLString))
 //                    AsyncImage(url: URL(string: image.urls.thumb)!, content: {
 //                        $0
 //                    }, placeholder: {

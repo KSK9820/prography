@@ -15,6 +15,7 @@ final class RecentImageCellViewModel: ObservableObject {
     }
     
     let width = CGFloat((screenWidth - 40) / 2)
+    
     var height: CGFloat {
         CGFloat(photo.height * Int(width) / photo.width)
     }

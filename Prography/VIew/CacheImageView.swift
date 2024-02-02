@@ -16,13 +16,15 @@ struct CacheImageView: View {
     
     var body: some View {
         selectImage()
-            .onAppear(perform: loader.load)
+            .task(loader.load)
     }
     
     private func selectImage() -> some View {
         Group {
             if let image = loader.uiImage {
                 Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
             } else {
                 ProgressView()
             }

@@ -7,17 +7,17 @@
 
 import SwiftUI
 
+
 struct PhotoDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    let viewModel: PhotoDetailViewModel
-    
+    private let viewModel: PhotoDetailViewModel
+
     init(viewModel: PhotoDetailViewModel) {
         self.viewModel = viewModel
     }
 
     var body: some View {
-        
         ZStack(alignment: .topLeading) {
             Color.black.ignoresSafeArea()
                 .opacity(0.9)
@@ -64,10 +64,11 @@ struct PhotoDetailView: View {
                 }
                 
                 AsyncImage(url: viewModel.photoURL) { image in
-                    image.image?.resizable()
+                    image.image?
+                        .resizable()
+                        .scaledToFit()
                 }
-                .frame(width: screenWidth, height: viewModel.photoHeight)
-                
+        
                 Spacer()
                 
                 VStack(alignment: .leading) {
@@ -87,9 +88,13 @@ struct PhotoDetailView: View {
                 .padding(.horizontal, 20)
             }
         }
+        .task {
+            viewModel.getaPhoto()
+        }
     }
+        
 }
 
 #Preview {
-PhotoDetailView(viewModel: PhotoDetailViewModel(photo: PhotoDTO(id: "300", width: 2448, height: 3264, description: "kadjflakjdl;skfja;lskdjf;alksalkdjlakjdlkfjaldkfjlkasjdlkhasflgkhlaskdjflkajdlfkajsldfkjlakdjflakdglkhafslgkhlasdkjfdjfla", altDescription: nil, urls: Urls(raw: "https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg", full: "https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg", regular: "https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg", small: "https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg", thumb: "https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg"), tags: [Tags(title: "man"), Tags(title: "dd")], currentUserCollections: [CurrentUserCollections(title: "hihihihihihih")], user: User(userName: "dddd"))))
+    PhotoDetailView(viewModel: PhotoDetailViewModel(id: "d6NJmJ60B8M"))
 }

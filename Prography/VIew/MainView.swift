@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct MainView: View {
-    private let viewModel = MainViewModel()
-
-    @State private var selectedImageID: PhotoDTO? = nil
     @State private var isPresentingModal: Bool = false
+    @State private var id: String = String()
     
-    init() {
-        viewModel.getPhotos()
-    }
+    private let viewModel = MainViewModel()
     
     var body: some View {
         NavigationStack {
@@ -33,7 +29,6 @@ struct MainView: View {
                     }
                 } header: {
                     HStack {
-                        
                         Text("북마크")
                             .font(.title.bold())
                         Spacer()
@@ -45,33 +40,19 @@ struct MainView: View {
                 // MARK: - RecentImage
                 
                 Section {
-                    HStack(alignment: .top) {
-                        LazyVStack(spacing: 8) {
-                            
-                            ForEach(0..<viewModel.photos.count, id: \.self) { index in
-                                RecentImageCell(viewModel: RecentImageCellViewModel(photo: viewModel.photos[index]))
-                                    .onTapGesture {
-                                        self.selectedImageID = viewModel.photos[index]
-                                        self.isPresentingModal = true
-                                    }
-                            }
-                            
-                        }
-                        
-                        LazyVStack(spacing: 8) {
-                            ForEach(0..<viewModel.photos.count, id: \.self) { index in
-                                if index % 2 == 1 {
-                                    RecentImageCell(viewModel: RecentImageCellViewModel(photo: viewModel.photos[index]))
-                                        .onTapGesture {
-                                            self.selectedImageID = viewModel.photos[index]
-                                            self.isPresentingModal = true
-                                        }
+                    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+                    
+                    LazyVGrid(columns: columns, spacing: 10) {
+                        ForEach(viewModel.photos, id: \.self) { photo in
+                            RecentImageCell(viewModel: RecentImageCellViewModel(photo: photo))
+                                .onTapGesture {
+                                    self.isPresentingModal = true
+                                    self.id = photo.id
                                 }
-                                
-                            }
                         }
-                    }.transparentFullScreenCover(isPresented: $isPresentingModal) {
-                        PhotoDetailView(viewModel: PhotoDetailViewModel(photo: selectedImageID ?? viewModel.photos[1]))
+                    }
+                    .transparentFullScreenCover(isPresented: $isPresentingModal) {
+                        PhotoDetailView(viewModel: PhotoDetailViewModel(id: id))
                     }
                 } header: {
                     HStack {
@@ -82,9 +63,9 @@ struct MainView: View {
                 }
                 .padding([.leading, .trailing])
             }
-            //            .onAppear {
-            //                viewModel.getPhotos()
-            //            }
+            .task {
+                viewModel.getPhotos()
+            }
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack {

@@ -23,7 +23,7 @@ extension HTTPServicable {
         guard let urlRequest = request.asURLRequest() else {
             return Fail(error: URLError(.badServerResponse)).eraseToAnyPublisher()
         }
-        
+        print(urlRequest)
         return httpPublisher.publishHTTP(for: urlRequest)
             .tryMap { data in
                 try decoder.decode(D.self, from: data)
