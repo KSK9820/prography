@@ -15,6 +15,8 @@
 		539E794A2B6C856B00D373DD /* photoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E79492B6C856B00D373DD /* photoDetailViewModel.swift */; };
 		539E794C2B6C85A500D373DD /* Extensioni+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E794B2B6C85A500D373DD /* Extensioni+View.swift */; };
 		539E794E2B6C88B500D373DD /* RecentImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E794D2B6C88B500D373DD /* RecentImageCellViewModel.swift */; };
+		539E79502B6DF55A00D373DD /* RandomPhotoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E794F2B6DF55A00D373DD /* RandomPhotoImageCell.swift */; };
+		539E79522B6DF77900D373DD /* RandomPhotoImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E79512B6DF77900D373DD /* RandomPhotoImageCellViewModel.swift */; };
 		539FF1AA2B6BA8420051EC7A /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539FF1A92B6BA8420051EC7A /* ImageCacher.swift */; };
 		539FF1AC2B6BAC4F0051EC7A /* ImageCacheLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539FF1AB2B6BAC4F0051EC7A /* ImageCacheLoader.swift */; };
 		539FF1AE2B6BB4B40051EC7A /* CacheImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539FF1AD2B6BB4B40051EC7A /* CacheImageView.swift */; };
@@ -43,6 +45,8 @@
 		539E79492B6C856B00D373DD /* photoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoDetailViewModel.swift; sourceTree = "<group>"; };
 		539E794B2B6C85A500D373DD /* Extensioni+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensioni+View.swift"; sourceTree = "<group>"; };
 		539E794D2B6C88B500D373DD /* RecentImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentImageCellViewModel.swift; sourceTree = "<group>"; };
+		539E794F2B6DF55A00D373DD /* RandomPhotoImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoImageCell.swift; sourceTree = "<group>"; };
+		539E79512B6DF77900D373DD /* RandomPhotoImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoImageCellViewModel.swift; sourceTree = "<group>"; };
 		539FF1A92B6BA8420051EC7A /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
 		539FF1AB2B6BAC4F0051EC7A /* ImageCacheLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheLoader.swift; sourceTree = "<group>"; };
 		539FF1AD2B6BB4B40051EC7A /* CacheImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageView.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 			children = (
 				539966E92B6B6E4400251119 /* BookmarkImageCell.swift */,
 				530984A62B6A69A700132CEB /* RecentImageCell.swift */,
+				539E794F2B6DF55A00D373DD /* RandomPhotoImageCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 				539E79492B6C856B00D373DD /* photoDetailViewModel.swift */,
 				530984A82B6A6B2500132CEB /* MainViewModel.swift */,
 				539E794D2B6C88B500D373DD /* RecentImageCellViewModel.swift */,
+				539E79512B6DF77900D373DD /* RandomPhotoImageCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -299,10 +305,12 @@
 				530984A92B6A6B2500132CEB /* MainViewModel.swift in Sources */,
 				53CEAD052B69EBBE00A99576 /* HTTPService.swift in Sources */,
 				530984A72B6A69A700132CEB /* RecentImageCell.swift in Sources */,
+				539E79522B6DF77900D373DD /* RandomPhotoImageCellViewModel.swift in Sources */,
 				530984A32B6A620900132CEB /* MainView.swift in Sources */,
 				53CEAD032B69EBBE00A99576 /* HTTPRequestable.swift in Sources */,
 				539FF1AE2B6BB4B40051EC7A /* CacheImageView.swift in Sources */,
 				53CEAD042B69EBBE00A99576 /* HTTPServicable.swift in Sources */,
+				539E79502B6DF55A00D373DD /* RandomPhotoImageCell.swift in Sources */,
 				53CEAD0A2B69EBD400A99576 /* Extension+UITabBarController.swift in Sources */,
 				539FF1B02B6BFC310051EC7A /* PhotoDetailView.swift in Sources */,
 			);
