@@ -7,8 +7,12 @@
 
 import SwiftUI
 
-
+@Observable
 final class ImageCacher {
+    static let shared = ImageCacher()
+    
+    private init() { }
+    
     private let nsCache = NSCache<NSString, UIImage>()
     
     subscript(_ urlString: String?) -> UIImage? {

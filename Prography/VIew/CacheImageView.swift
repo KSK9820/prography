@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct CacheImageView: View {
     private var loader: ImageCacheLoader
     
@@ -15,8 +16,11 @@ struct CacheImageView: View {
     }
     
     var body: some View {
-        selectImage()
-            .task(loader.load)
+        selectImage()            
+//            .onAppear(perform: loader.load)
+            .task {
+                loader.load()
+            }
     }
     
     private func selectImage() -> some View {
@@ -32,6 +36,6 @@ struct CacheImageView: View {
     }
 }
 
-#Preview {
-    CacheImageView(urlString: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpEyoy%2Fbtq7ygWkOum%2FlgvkupIYN2x5xKQ00NGkl1%2Fimg.png")
-}
+//#Preview {
+//    CacheImageView(urlString: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpEyoy%2Fbtq7ygWkOum%2FlgvkupIYN2x5xKQ00NGkl1%2Fimg.png")
+//}

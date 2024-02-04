@@ -32,12 +32,22 @@ extension UnsplashRequest: HTTPRequestable {
         case .main:
             return ["photos"]
         case .randomPhoto:
-            return ["photos", "randoms"]
+            return ["photos", "random"]
         case .photoDetail(let id):
             return ["photos", id]
         }
     }
-    var queries: [URLQueryItem]? { nil }
+    var queries: [URLQueryItem]? {
+        switch self {
+        case .main:
+//            return [URLQueryItem(name: "page", value: page)]
+            return nil
+        case .photoDetail:
+            return nil
+        case .randomPhoto:
+            return [URLQueryItem(name: "count", value: "10")]
+        }
+    }
     var contentType: [String : String]? {
         switch self {
         case .main:

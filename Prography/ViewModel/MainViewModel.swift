@@ -15,11 +15,11 @@ final class MainViewModel {
     private let httpService: HTTPServicable = HTTPService()
     private(set) var photos: [PhotoDTO] = []
     
-    func getPhotos() {
+    func getPhotos(page: Int) {
         httpService.request(for: UnsplashRequest.main, type: [PhotoDTO].self)
             .replaceError(with: [])
             .sink(receiveValue: { [weak self] photos in
-                self?.photos += photos
+                    self?.photos += photos
             })
             .store(in: &cancellables)
     }

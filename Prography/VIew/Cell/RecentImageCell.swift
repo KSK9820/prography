@@ -18,15 +18,9 @@ struct RecentImageCell: View {
         ZStack(alignment: .bottomLeading) {
             RoundedRectangle(cornerRadius: 4)
                 .fill(.clear)
-                .background(
+                .background(alignment: .center) {
                     CacheImageView(urlString: viewModel.photoURLString)
-//                    AsyncImage(url: URL(string: viewModel.photoURLString))
-//                    AsyncImage(url: URL(string: image.urls.thumb)!, content: {
-//                        $0
-//                    }, placeholder: {
-//                        Text("123")
-//                    })
-                )
+                }
                 .frame(width: viewModel.width, height: viewModel.height)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
             

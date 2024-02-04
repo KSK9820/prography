@@ -11,7 +11,6 @@ import Combine
 @Observable
 final class ImageCacheLoader {
     private let url: URL
-    private let imageCacher = ImageCacher()
     private var cancellable: AnyCancellable? = nil
     
     var uiImage: UIImage? = nil
@@ -21,8 +20,10 @@ final class ImageCacheLoader {
     }
     
     func load() {
-        if imageCacher[url.absoluteString] != nil {
-            uiImage = imageCacher[url.absoluteString]
+        if ImageCacher.shared[url.absoluteString] != nil {
+            DispatchQueue.main.async { [weak self] in
+                self?.uiImage = ImageCacher.shared[self?.url.absoluteString]
+            }
             return
         }
         
@@ -34,9 +35,10 @@ final class ImageCacheLoader {
                 return image
             }
             .replaceError(with: UIImage(systemName: "sun.min")!)
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] image in
                     self?.uiImage = image
-                    self?.imageCacher.store(image, for: self?.url.absoluteString)
+                    ImageCacher.shared.store(image, for: self?.url.absoluteString)
             })
     }
 }
