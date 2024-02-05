@@ -14,7 +14,8 @@ Unsplash API를 이용해서 사진 썸네일 목록들(List photos), 디테일 
 | 메인 화면 | 상세 화면 | 랜덤 포토 |
 | --- | --- | --- |
 |![메인화면](https://github.com/KSK9820/prography/assets/68066104/c7dbaa3c-f546-46ae-9e31-0c1b16db170b)| ![상세화면](https://github.com/KSK9820/prography/assets/68066104/fe7a94d4-2465-4fa9-bec2-b1e041411d9b)|![랜덤포토](https://github.com/KSK9820/prography/assets/68066104/2ab7cc4d-82fe-4262-a65a-71e2d0882e1c)|
-
+- Pagination
+- NSCache 저장 
 <br/>
 
 ## 프로젝트 파일 구조
