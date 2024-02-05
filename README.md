@@ -9,7 +9,12 @@ Unsplash API를 이용해서 사진 썸네일 목록들(List photos), 디테일 
 
 ## 구현 영상
 
-- Device: iPhone 15 Pro
+- Device: iPhone 15
+
+| 메인 화면 | 상세 화면 | 랜덤 포토 |
+| --- | --- | --- |
+|![메인화면](https://github.com/KSK9820/prography/assets/68066104/c7dbaa3c-f546-46ae-9e31-0c1b16db170b)| ![상세화면](https://github.com/KSK9820/prography/assets/68066104/fe7a94d4-2465-4fa9-bec2-b1e041411d9b)|![랜덤포토](https://github.com/KSK9820/prography/assets/68066104/2ab7cc4d-82fe-4262-a65a-71e2d0882e1c)|
+
 <br/>
 
 ## 프로젝트 파일 구조
@@ -87,16 +92,11 @@ Unsplash API를 이용해서 사진 썸네일 목록들(List photos), 디테일 
 
 | 이름 | 타입 | 내용 |
 | --- | --- | --- |
-| HTTPPublisher
-> HTTPPublishable | protocol | Unspalsh API와 네트워크 통신 |
-| HTTPRequest
-> HTTPRequestable | protocol | Request 생성 |
-| HTTPRequest
-> UnsplashRequest | Enum | HTTPReqeustable을 준수하는 concrete 객체 |
-| HTTPService
-> HTTPServicable | protocol | 생성된 request로 API 통신을 호출하고, 결과를 decode하는 객체 |
-| HTTPService
-> HTTPService | final class | HTTPServicable을 채택한 concrete 객체 |
+| HTTPPublisher> HTTPPublishable | protocol | Unspalsh API와 네트워크 통신 |
+| HTTPRequest> HTTPRequestable | protocol | Request 생성 |
+| HTTPRequest> UnsplashRequest | Enum | HTTPReqeustable을 준수하는 concrete 객체 |
+| HTTPService> HTTPServicable | protocol | 생성된 request로 API 통신을 호출하고, 결과를 decode하는 객체 |
+| HTTPService> HTTPService | final class | HTTPServicable을 채택한 concrete 객체 |
 
 ### Extension
 
